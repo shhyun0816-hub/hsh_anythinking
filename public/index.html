@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>아무생각</title>
+    <meta
+      name="description"
+      content="순간순간 떠오르는 생각, 하고 있는 일, 노래 같은 걸 아무렇게나 적는 곳"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="collage-bg" class="collage-bg" aria-hidden="true"></div>
+    <header id="site-header" class="site-header"></header>
+
+    <main>
+      <section class="intro">
+        <h1 class="title">아무생각</h1>
+        <p>
+          순간순간 하고 있는 일, 문득 떠오르는 생각, 듣고 있는 노래 같은 걸
+          아무렇게나 적어두는 게시판이에요. 누구나 이름과 이메일만 남기면
+          자유롭게 글을 올릴 수 있어요.
+        </p>
+      </section>
+
+      <section class="info-box">
+        <h2>이런 곳이에요</h2>
+        <ul>
+          <li>로그인이나 회원가입 없이 누구나 글을 쓸 수 있어요.</li>
+          <li>글에는 하트, 기쁨, 슬픔, 엄지척, 엄지다운으로 공감을 남길 수 있어요.</li>
+          <li>관리자나 알림 기능은 따로 없어요. 그냥 조용히 적어두는 공간이에요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="board-header">
+          <h2 class="section-title">게시판</h2>
+          <a href="/write.html" class="btn btn-sm">글쓰기</a>
+        </div>
+        <div id="post-list-container" style="margin-top: 1rem">
+          <p class="empty-state">불러오는 중...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+
+    <script src="/app.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

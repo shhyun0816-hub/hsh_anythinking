@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>글쓰기 · 아무생각</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="collage-bg" class="collage-bg" aria-hidden="true"></div>
+    <header id="site-header" class="site-header"></header>
+
+    <main>
+      <h1 class="section-title">글쓰기</h1>
+
+      <form id="write-form">
+        <div class="field">
+          <label for="title">제목</label>
+          <input id="title" name="title" required />
+        </div>
+
+        <div class="field">
+          <label for="content">내용</label>
+          <textarea id="content" name="content" rows="8" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="author_name">이름</label>
+            <input id="author_name" name="author_name" required />
+          </div>
+          <div class="field">
+            <label for="author_email">이메일</label>
+            <input id="author_email" name="author_email" type="email" required />
+          </div>
+        </div>
+
+        <p id="error" class="error-text" style="display: none"></p>
+
+        <button type="submit" id="submit-btn" class="btn">올리기</button>
+      </form>
+    </main>
+
+    <footer id="site-footer" class="site-footer"></footer>
+
+    <script src="/app.js"></script>
+    <script src="/write.js"></script>
+  </body>
+</html>
