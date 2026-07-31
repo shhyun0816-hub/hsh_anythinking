@@ -43,3 +43,42 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
 }
+
+.collage-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 4px;
+  overflow: hidden;
+  filter: saturate(0.85);
+}
+
+.collage-tile {
+  background-size: cover;
+  background-position: center;
+}
+
+.collage-tile:nth-child(4n + 1) {
+  transform: rotate(-2deg) scale(1.06);
+}
+
+.collage-tile:nth-child(4n + 2) {
+  transform: rotate(1.5deg) scale(1.06);
+}
+
+.collage-tile:nth-child(4n + 3) {
+  transform: rotate(-1deg) scale(1.06);
+}
+
+.collage-tile:nth-child(4n + 4) {
+  transform: rotate(2deg) scale(1.06);
+}
+
+.collage-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82);
+}

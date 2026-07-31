@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: "순간순간 떠오르는 생각, 하고 있는 일, 노래 같은 걸 아무렇게나 적는 곳",
 };
 
+const COLLAGE_IMAGES = Array.from(
+  { length: 27 },
+  (_, i) => `/images/collage/banksy-${(i % 9) + 1}.jpg`
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,6 +20,17 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-900">
+        <div className="collage-bg" aria-hidden="true">
+          {COLLAGE_IMAGES.map((src, i) => (
+            <div
+              key={i}
+              className="collage-tile"
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+          <div className="collage-overlay" />
+        </div>
+
         <header className="border-b border-neutral-200 bg-white">
           <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-4">
             <Link href="/" className="font-pop text-xl tracking-tight">
@@ -33,7 +49,7 @@ export default function RootLayout({
         <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
           {children}
         </main>
-        <footer className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-400">
+        <footer className="border-t border-neutral-200 bg-white/90 py-6 text-center text-xs text-neutral-400">
           아무생각 · 아무나 쓰는 게시판
         </footer>
       </body>
