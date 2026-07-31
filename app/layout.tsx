@@ -37,11 +37,8 @@ export default function RootLayout({
               아무생각
             </Link>
             <nav className="flex gap-4 text-sm text-neutral-600">
-              <Link href="/" className="hover:text-neutral-900">
-                소개
-              </Link>
-              <Link href="/board" className="hover:text-neutral-900">
-                게시판
+              <Link href="/board/new" className="hover:text-neutral-900">
+                글쓰기
               </Link>
             </nav>
           </div>

@@ -1,8 +1,16 @@
 import Link from "next/link";
+import db, { Post, REACTIONS } from "@/lib/db";
+import { REACTION_META, formatDate } from "@/lib/reactions";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
+  const posts = db
+    .prepare("SELECT * FROM posts ORDER BY created_at DESC, id DESC")
+    .all() as Post[];
+
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <section>
         <h1 className="font-pop text-3xl">아무생각</h1>
         <p className="mt-3 leading-relaxed text-neutral-700">
@@ -21,12 +29,53 @@ export default function Home() {
         </ul>
       </section>
 
-      <Link
-        href="/board"
-        className="inline-block w-fit rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-700"
-      >
-        게시판 보러가기
-      </Link>
+      <section className="flex flex-col gap-4">
+        <div className="flex items-center justify-between border-t border-neutral-200 pt-6">
+          <h2 className="font-pop text-2xl">게시판</h2>
+          <Link
+            href="/board/new"
+            className="rounded-md bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-700"
+          >
+            글쓰기
+          </Link>
+        </div>
+
+        {posts.length === 0 ? (
+          <p className="rounded-lg border border-dashed border-neutral-300 p-8 text-center text-sm text-neutral-500">
+            아직 아무 글도 없어요. 첫 글을 남겨보세요.
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-3">
+            {posts.map((post) => (
+              <li
+                key={post.id}
+                className="rounded-lg border border-neutral-200 bg-white p-4"
+              >
+                <Link href={`/board/${post.id}`} className="block">
+                  <h3 className="font-semibold hover:underline">{post.title}</h3>
+                  <p className="mt-1 line-clamp-2 text-sm text-neutral-600">
+                    {post.content}
+                  </p>
+                  <div className="mt-2 flex items-center justify-between text-xs text-neutral-400">
+                    <span>
+                      {post.author_name} · {formatDate(post.created_at)}
+                    </span>
+                    <span className="flex gap-2">
+                      {REACTIONS.map((type) =>
+                        post[type] > 0 ? (
+                          <span key={type}>
+                            {REACTION_META[type].emoji} {post[type]}
+                          </span>
+                        ) : null
+                      )}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
   );
 }
