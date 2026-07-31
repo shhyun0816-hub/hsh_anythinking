@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import db, { Comment } from "@/lib/db";
 
+export async function GET(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  const comments = db
+    .prepare("SELECT * FROM comments WHERE post_id = ? ORDER BY created_at ASC, id ASC")
+    .all(id) as Comment[];
+
+  return NextResponse.json(comments);
+}
+
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
