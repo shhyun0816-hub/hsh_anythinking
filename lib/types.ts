@@ -15,3 +15,12 @@ export interface Post {
   thumbs_up: number;
   thumbs_down: number;
 }
+
+export interface Comment {
+  id: number;
+  post_id: number;
+  author_name: string;
+  author_email: string;
+  content: string;
+  created_at: string;
+}

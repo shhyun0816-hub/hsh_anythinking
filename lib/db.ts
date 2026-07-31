@@ -18,6 +18,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 db.pragma("journal_mode = WAL");
+db.pragma("foreign_keys = ON");
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS posts (
@@ -33,9 +34,20 @@ db.exec(`
     thumbs_up INTEGER NOT NULL DEFAULT 0,
     thumbs_down INTEGER NOT NULL DEFAULT 0
   );
+
+  CREATE TABLE IF NOT EXISTS comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+    author_name TEXT NOT NULL,
+    author_email TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_comments_post_id ON comments(post_id);
 `);
 
-export type { Reaction, Post } from "@/lib/types";
+export type { Reaction, Post, Comment } from "@/lib/types";
 export { REACTIONS } from "@/lib/types";
 
 export default db;
