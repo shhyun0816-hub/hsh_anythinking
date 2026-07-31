@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-6">
       <section>
-        <h1 className="text-2xl font-bold">아무생각</h1>
+        <h1 className="font-pop text-3xl">아무생각</h1>
         <p className="mt-3 leading-relaxed text-neutral-700">
           순간순간 하고 있는 일, 문득 떠오르는 생각, 듣고 있는 노래 같은 걸
           아무렇게나 적어두는 게시판이에요. 누구나 이름과 이메일만 남기면

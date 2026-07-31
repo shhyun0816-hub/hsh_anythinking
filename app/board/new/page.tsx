@@ -42,7 +42,7 @@ export default function NewPostPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-xl font-bold">글쓰기</h1>
+      <h1 className="font-pop text-2xl">글쓰기</h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">

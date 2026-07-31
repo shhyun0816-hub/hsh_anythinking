@@ -12,7 +12,7 @@ export default function BoardPage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">게시판</h1>
+        <h1 className="font-pop text-2xl">게시판</h1>
         <Link
           href="/board/new"
           className="rounded-md bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-700"

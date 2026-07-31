@@ -22,7 +22,7 @@ export default async function PostPage({
   return (
     <article className="flex flex-col gap-4">
       <div>
-        <h1 className="text-xl font-bold">{post.title}</h1>
+        <h1 className="font-pop text-2xl">{post.title}</h1>
         <p className="mt-1 text-xs text-neutral-400">
           {post.author_name} · {formatDate(post.created_at)}
         </p>
