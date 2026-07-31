@@ -2,7 +2,11 @@ import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
 
-const dataDir = path.join(process.cwd(), "data");
+// Vercel's serverless filesystem is read-only outside /tmp; fall back to it
+// there. Data written to /tmp doesn't persist across deploys/cold starts.
+const dataDir = process.env.VERCEL
+  ? "/tmp"
+  : path.join(process.cwd(), "data");
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
